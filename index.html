@@ -329,9 +329,18 @@ input[type="file"] { display: none; }
 
 <div class="toast" id="toast"></div>
 
+<script src="app.js"></script>
 <script>
+function logBW() {
+  const val = document.getElementById('bw-val').value;
+  const date = document.getElementById('bw-date').value || new Date().toISOString().split('T')[0];
+  if (!val) { showToast('Enter a weight'); return; }
+  logBodyweight(val, date);
+  renderWeightChart();
+  showToast('Logged ✓');
+}
+
 // ── PASSWORD GATE ─────────────────────────────────────────────────────────────
-// Change this to whatever password you want
 const APP_PASSWORD = 'warrior2026';
 const UNLOCK_KEY = 'warrior_unlocked_v1';
 
@@ -354,32 +363,19 @@ document.getElementById('lock-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') tryUnlock();
 });
 
-function checkLock() {
-  if (localStorage.getItem(UNLOCK_KEY) === 'true') {
-    document.getElementById('lock-screen').style.display = 'none';
-    initApp();
-  }
-  // else lock screen stays visible
-}
-
 function initApp() {
   loadState();
   document.getElementById('session-date').value = state.sessionDate;
+  document.getElementById('bw-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('photo-date').value = new Date().toISOString().split('T')[0];
   renderAll();
   setInterval(renderTimer, 500);
 }
 
-checkLock();
-</script>
-<script src="app.js"></script>
-<script>
-function logBW() {
-  const val = document.getElementById('bw-val').value;
-  const date = document.getElementById('bw-date').value || new Date().toISOString().split('T')[0];
-  if (!val) { showToast('Enter a weight'); return; }
-  logBodyweight(val, date);
-  renderWeightChart();
-  showToast('Logged ✓');
+// Check on load — if already unlocked go straight in
+if (localStorage.getItem(UNLOCK_KEY) === 'true') {
+  document.getElementById('lock-screen').style.display = 'none';
+  initApp();
 }
 </script>
 </body>
