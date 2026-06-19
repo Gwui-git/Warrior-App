@@ -313,8 +313,13 @@ input[type="file"]{display:none;}
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js"></script>
+<script src="app.js?v=4"></script>
 <script>
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
+}
+
 const APP_PASSWORD = 'warrior2026';
 const UNLOCK_KEY = 'warrior_unlocked_v1';
 
