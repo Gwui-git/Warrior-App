@@ -1,0 +1,24 @@
+{
+  "name": "Warrior — Fitness Logger",
+  "short_name": "Warrior",
+  "description": "Workout logger, nutrition tracker, and progress journal for Andrew and Esme",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ef",
+  "theme_color": "#8B3A52",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
