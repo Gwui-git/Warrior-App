@@ -11,61 +11,67 @@ const DEFAULT_PROFILES = {
         {
           id: 'push', label: 'Push', sub: 'Chest · Shoulders · Triceps', color: '#C0421A',
           sections: [
-            { label: 'Shoulders', exercises: [
-              { name: 'Dumbbell shoulder press', sets: 3, reps: '10–12', weight: '80', type: 'compound' },
-              { name: 'Cable lateral raise', sets: 3, reps: '15–20', weight: '', type: 'isolation' },
-              { name: 'One arm landmine press', sets: 3, reps: '10–12 ea', weight: '', type: 'compound' },
-            ]},
             { label: 'Chest', exercises: [
-              { name: 'Barbell bench press — flat', sets: 3, reps: '8–10', weight: '185', type: 'compound' },
-              { name: 'Seated cable fly', sets: 3, reps: '12–15', weight: '', type: 'isolation' },
+              { name: 'Barbell bench press', sets: 5, reps: '5/5/12/12/10', weight: '185', type: 'compound' },
+              { name: 'Barbell incline bench press', sets: 3, reps: '12', weight: '115', type: 'compound' },
+              { name: 'Seated cable fly', sets: 3, reps: '15', weight: '40', type: 'isolation' },
+            ]},
+            { label: 'Shoulders', exercises: [
+              { name: 'Single arm landmine press', sets: 3, reps: '12', weight: '100', type: 'compound' },
+              { name: 'Cable lateral raise', sets: 3, reps: '20', weight: '15', type: 'isolation' },
             ]},
             { label: 'Triceps', exercises: [
-              { name: 'Tricep rope pushdown', sets: 3, reps: '12–15', weight: '', type: 'isolation' },
-              { name: 'Overhead cable tricep extension', sets: 3, reps: '10–12', weight: '', type: 'isolation' },
+              { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115', type: 'isolation' },
+              { name: 'Cable rope tricep extension', sets: 3, reps: '12', weight: '80', type: 'isolation' },
             ]},
             { label: 'Core', exercises: [
-              { name: 'Plank', sets: 3, reps: '35–45s', weight: 'BW', type: 'core' },
+              { name: 'Plank', sets: 3, reps: '40s', weight: 'BW', type: 'core' },
+              { name: 'Ab wheel rollout', sets: 3, reps: '9–10', weight: 'BW', type: 'core' },
             ]},
           ]
         },
         {
           id: 'pull', label: 'Pull', sub: 'Back · Biceps · Rear Delts', color: '#2D6A4F',
           sections: [
-            { label: 'Back — vertical', exercises: [
-              { name: 'Lat pulldown — wide grip', sets: 4, reps: '10–12', weight: '', type: 'compound' },
-              { name: 'Assisted pull-up', sets: 3, reps: '8', weight: '', type: 'compound' },
-            ]},
             { label: 'Back — horizontal', exercises: [
-              { name: 'Meadows row', sets: 4, reps: '12', weight: '100', type: 'compound' },
-              { name: 'Seated cable row', sets: 3, reps: '10–12', weight: '', type: 'compound' },
+              { name: 'Barbell row', sets: 4, reps: '12', weight: '185', type: 'compound' },
+              { name: 'T-bar row', sets: 3, reps: '12', weight: '110', type: 'compound' },
+            ]},
+            { label: 'Back — vertical', exercises: [
+              { name: 'Lat pulldown', sets: 3, reps: '12', weight: '180', type: 'compound' },
+              { name: 'Lat pulldown neutral grip', sets: 3, reps: '12', weight: '165', type: 'compound' },
             ]},
             { label: 'Rear delt', exercises: [
+              { name: 'Cross cable rear delt fly', sets: 3, reps: '15', weight: '20', type: 'isolation' },
               { name: 'Cable face pull', sets: 3, reps: '20', weight: '55', type: 'isolation' },
-              { name: 'Rear delt dumbbell fly', sets: 3, reps: '15', weight: '', type: 'isolation' },
             ]},
             { label: 'Biceps', exercises: [
-              { name: 'Cable bicep curl', sets: 3, reps: '15', weight: '75', type: 'isolation' },
-              { name: 'Hammer curl', sets: 3, reps: '12', weight: '', type: 'isolation' },
-            ]},
-            { label: 'Core', exercises: [
-              { name: 'Dead bug', sets: 3, reps: '10 ea side', weight: 'BW', type: 'core' },
+              { name: 'Cable hammer curl', sets: 3, reps: '15', weight: '65', type: 'isolation' },
+              { name: 'Cable bicep curl', sets: 3, reps: '12', weight: '80', type: 'isolation' },
+              { name: 'Behind the back cable bicep curl', sets: 3, reps: '12', weight: '30', type: 'isolation' },
             ]},
           ]
         },
         {
           id: 'legs', label: 'Legs', sub: 'Glutes · Quads · Hamstrings', color: '#7B4F8E',
           sections: [
-            { label: 'Compound', exercises: [
-              { name: 'Barbell squat', sets: 3, reps: '8–10', weight: '', type: 'compound' },
-              { name: 'Romanian deadlift', sets: 3, reps: '10–12', weight: '', type: 'compound' },
+            { label: 'Quads', exercises: [
+              { name: 'Back squat', sets: 5, reps: '10', weight: '130', type: 'compound' },
+              { name: 'Dumbbell Bulgarian split squat', sets: 3, reps: '12', weight: '25', type: 'compound' },
             ]},
-            { label: 'Isolation', exercises: [
-              { name: 'Leg press', sets: 3, reps: '12', weight: '', type: 'compound' },
-              { name: 'Leg curl', sets: 3, reps: '12–15', weight: '', type: 'isolation' },
+            { label: 'Hamstrings', exercises: [
+              { name: 'Barbell Romanian deadlift', sets: 3, reps: '12', weight: '165', type: 'compound' },
+              { name: 'Single leg lying hamstring curl', sets: 3, reps: '12', weight: '30', type: 'isolation' },
+            ]},
+            { label: 'Glutes', exercises: [
+              { name: 'Cable kickback', sets: 3, reps: '20', weight: '30', type: 'isolation' },
+            ]},
+            { label: 'Calves', exercises: [
+              { name: 'Barbell calf raise', sets: 3, reps: '20', weight: '145', type: 'isolation' },
             ]},
             { label: 'Core', exercises: [
-              { name: 'Hanging knee raise', sets: 3, reps: '13', weight: 'BW', type: 'core' },
+              { name: 'Ab wheel rollout', sets: 3, reps: '10', weight: 'BW', type: 'core' },
+              { name: 'Hanging knee raise', sets: 3, reps: '12', weight: 'BW', type: 'core' },
             ]},
           ]
         },
@@ -73,17 +79,17 @@ const DEFAULT_PROFILES = {
           id: 'upper', label: 'Upper', sub: 'Full Upper + Core', color: '#2D4EA0',
           sections: [
             { label: 'Chest + Back — compound', exercises: [
-              { name: 'Barbell bench press — flat', sets: 3, reps: '10', weight: '150', type: 'compound' },
-              { name: 'Lat pulldown — wide grip', sets: 4, reps: '12', weight: '180', type: 'compound' },
+              { name: 'Barbell bench press', sets: 3, reps: '10', weight: '160', type: 'compound' },
+              { name: 'Lat pulldown', sets: 4, reps: '12', weight: '180', type: 'compound' },
               { name: 'Assisted pull-up', sets: 3, reps: '8', weight: '', type: 'compound' },
               { name: 'Meadows row', sets: 4, reps: '12', weight: '100', type: 'compound' },
             ]},
             { label: 'Shoulders', exercises: [
-              { name: 'Barbell shoulder press', sets: 3, reps: '10', weight: '80', type: 'compound' },
+              { name: 'Barbell shoulder press', sets: 3, reps: '10', weight: '85', type: 'compound' },
             ]},
             { label: 'Arms', exercises: [
               { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115', type: 'isolation' },
-              { name: 'Cable bicep curl', sets: 3, reps: '15', weight: '75', type: 'isolation' },
+              { name: 'Cable bicep curl', sets: 3, reps: '15', weight: '80', type: 'isolation' },
             ]},
             { label: 'Rear delt + Core', exercises: [
               { name: 'Cable face pull', sets: 3, reps: '20', weight: '55', type: 'isolation' },
@@ -735,9 +741,4 @@ function renderAll() {
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
-window.onload = () => {
-  loadState();
-  document.getElementById('session-date').value = state.sessionDate;
-  renderAll();
-  setInterval(renderTimer, 500);
-};
+// Init called by lock screen in index.html
