@@ -593,9 +593,9 @@ function switchDay(idx) {
 function switchView(view) {
   state.currentView = view;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
-  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const el = document.getElementById('view-' + view);
-  if (el) el.style.display = 'block';
+  if (el) el.classList.add('active');
   if (view === 'history') renderHistory();
   if (view === 'weight') renderWeightChart();
   if (view === 'photos') renderPhotos();

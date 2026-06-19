@@ -12,189 +12,176 @@
 <title>Warrior</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap');
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-:root {
-  --bg: #f7f4ef; --white: #fff; --black: #0f0f0d; --muted: #8a8780;
-  --border: #e2dfd8; --rose: #8B3A52; --rose-light: #F5E8EC; --rose-dark: #5E2438;
-  --surface: #f0ece4; --nav-h: 62px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+:root{
+  --bg:#f7f4ef;--white:#fff;--black:#0f0f0d;--muted:#8a8780;
+  --border:#e2dfd8;--rose:#8B3A52;--rose-light:#F5E8EC;--rose-dark:#5E2438;
+  --surface:#f0ece4;--nav-h:62px;
 }
+html,body{height:100%;overflow:hidden;margin:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--black);font-size:15px;}
 
-/* ── LOCK SCREEN ── */
-#lock-screen {
-  position: fixed; inset: 0; background: var(--bg);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  z-index: 9999; padding: 2rem;
-}
-.lock-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; margin-bottom: 6px; }
-.lock-title em { font-style: italic; color: var(--rose); }
-.lock-sub { font-size: 14px; color: var(--muted); margin-bottom: 2.5rem; }
-.lock-form { width: 100%; max-width: 280px; display: flex; flex-direction: column; gap: 12px; }
-.lock-input {
-  font-size: 16px; padding: 12px 16px; border: 1px solid var(--border);
-  border-radius: 12px; background: var(--white); color: var(--black);
-  font-family: 'DM Sans', sans-serif; text-align: center; letter-spacing: 0.15em;
-  width: 100%;
-}
-.lock-input:focus { outline: none; border-color: var(--rose); }
-.lock-btn {
-  padding: 13px; background: var(--rose); color: white; border: none;
-  border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em;
-}
-.lock-btn:active { background: var(--rose-dark); }
-.lock-error { font-size: 13px; color: var(--rose-dark); text-align: center; min-height: 18px; }
-.lock-hint { font-size: 12px; color: var(--muted); text-align: center; margin-top: 0.5rem; }
+/* LOCK */
+#lock-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:2rem;}
+.lock-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;margin-bottom:6px;}
+.lock-title em{font-style:italic;color:var(--rose);}
+.lock-sub{font-size:14px;color:var(--muted);margin-bottom:2.5rem;}
+.lock-form{width:100%;max-width:280px;display:flex;flex-direction:column;gap:12px;}
+.lock-input{font-size:16px;padding:12px 16px;border:1px solid var(--border);border-radius:12px;background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;text-align:center;letter-spacing:0.15em;width:100%;}
+.lock-input:focus{outline:none;border-color:var(--rose);}
+.lock-btn{padding:13px;background:var(--rose);color:white;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.lock-btn:active{background:var(--rose-dark);}
+.lock-error{font-size:13px;color:var(--rose-dark);text-align:center;min-height:18px;}
+.lock-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:0.5rem;}
 
-html, body { height: 100%; overflow: hidden; margin: 0; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--black); font-size: 15px; display: flex; flex-direction: column; }
-#lock-screen { position: fixed; inset: 0; z-index: 9999; background: var(--bg); }
-#app-shell { display: none; flex: 1; flex-direction: column; height: 100%; overflow: hidden; }
-#app-shell.unlocked { display: flex; }
+/* APP SHELL */
+#app-shell{display:none;flex-direction:column;height:100%;overflow:hidden;}
+#app-shell.unlocked{display:flex;}
 
-/* ── HEADER ── */
-.app-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 16px 0; flex-shrink: 0; z-index: 50; }
-.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.app-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; }
-.app-title em { font-style: italic; color: var(--rose); }
-.profile-switcher { display: flex; gap: 6px; }
-.profile-btn { padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--muted); transition: all 0.15s; }
-.profile-btn.active { background: var(--rose); color: white; border-color: var(--rose); font-weight: 500; }
-.day-tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 0; scrollbar-width: none; }
-.day-tabs::-webkit-scrollbar { display: none; }
-.day-tab { flex-shrink: 0; padding: 8px 14px; font-size: 13px; font-weight: 500; border: none; background: none; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
-.day-tab.active { border-bottom-width: 2px; }
+/* HEADER */
+.app-header{background:var(--white);border-bottom:1px solid var(--border);padding:10px 16px 0;flex-shrink:0;z-index:50;}
+.header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.app-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;}
+.app-title em{font-style:italic;color:var(--rose);}
+.profile-switcher{display:flex;gap:6px;}
+.profile-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--muted);transition:all 0.15s;}
+.profile-btn.active{background:var(--rose);color:white;border-color:var(--rose);font-weight:500;}
+.day-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+.day-tabs::-webkit-scrollbar{display:none;}
+.day-tab{flex-shrink:0;padding:8px 14px;font-size:13px;font-weight:500;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.day-tab.active{border-bottom-width:2px;}
 
-/* ── SCROLL BODY ── */
-.scroll-body { flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 0 0 calc(var(--nav-h) + 16px); }
+/* SCROLL */
+.scroll-body{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:0 0 calc(var(--nav-h) + 16px);}
 
-/* ── TIMER BAR ── */
-#timer-bar { display: none; position: sticky; top: 0; z-index: 40; background: var(--rose-dark); padding: 8px 16px; flex-direction: row; align-items: center; gap: 10px; }
-.timer-time { font-size: 20px; font-weight: 700; color: white; min-width: 48px; font-variant-numeric: tabular-nums; }
-.timer-track { flex: 1; height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden; }
-#timer-fill { height: 100%; background: white; border-radius: 2px; transition: width 1s linear; }
-.timer-btn { font-size: 12px; font-weight: 600; color: white; background: rgba(255,255,255,0.2); border: none; border-radius: 8px; padding: 4px 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+/* TIMER */
+#timer-bar{display:none;position:sticky;top:0;z-index:40;background:var(--rose-dark);padding:8px 16px;flex-direction:row;align-items:center;gap:10px;}
+.timer-time{font-size:20px;font-weight:700;color:white;min-width:48px;font-variant-numeric:tabular-nums;}
+.timer-track{flex:1;height:4px;background:rgba(255,255,255,0.25);border-radius:2px;overflow:hidden;}
+#timer-fill{height:100%;background:white;border-radius:2px;transition:width 1s linear;}
+.timer-btn{font-size:12px;font-weight:600;color:white;background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
 
-/* ── VIEWS ── */
-.view { display: none; padding: 0 16px; }
-#view-workout { display: block; }
+/* VIEWS */
+.view{display:none;padding:0 16px;}
+.view.active{display:block;}
 
-/* ── PROGRESS ── */
-.progress-wrap { padding: 12px 0 4px; }
-.progress-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.progress-label { font-size: 12px; color: var(--muted); }
-.progress-pct { font-size: 12px; font-weight: 600; color: var(--rose); }
-.bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--rose); border-radius: 2px; transition: width 0.3s; }
+/* PROGRESS */
+.progress-wrap{padding:12px 0 4px;}
+.progress-row{display:flex;justify-content:space-between;margin-bottom:5px;}
+.progress-label{font-size:12px;color:var(--muted);}
+.progress-pct{font-size:12px;font-weight:600;color:var(--rose);}
+.bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.bar-fill{height:100%;background:var(--rose);border-radius:2px;transition:width 0.3s;}
 
-/* ── SESSION CONTROLS ── */
-.session-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 8px 0 4px; }
-.session-controls label { font-size: 12px; color: var(--muted); }
-.session-controls input { font-size: 13px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; }
+/* SESSION CONTROLS */
+.session-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0 4px;}
+.session-controls label{font-size:12px;color:var(--muted);}
+.session-controls input{font-size:13px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;}
 
-/* ── SECTION LABEL ── */
-.section-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+/* SECTION */
+.section-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;}
 
-/* ── EXERCISE BLOCK ── */
-.ex-block { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; transition: opacity 0.2s; }
-.ex-block.done { opacity: 0.38; }
-.ex-block.done .ex-name-text { text-decoration: line-through; }
-.ex-header { margin-bottom: 10px; }
-.ex-title-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 3px; }
-.ex-name-text { font-size: 14px; font-weight: 500; }
-.pr-badge { font-size: 10px; background: var(--rose-light); color: var(--rose-dark); padding: 2px 7px; border-radius: 10px; font-weight: 600; }
-.ex-meta { font-size: 12px; color: var(--muted); }
-.rest-label { color: var(--rose); }
+/* EXERCISE */
+.ex-block{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;transition:opacity 0.2s;}
+.ex-block.done{opacity:0.38;}
+.ex-block.done .ex-name-text{text-decoration:line-through;}
+.ex-header{margin-bottom:10px;}
+.ex-title-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px;}
+.ex-name-text{font-size:14px;font-weight:500;}
+.pr-badge{font-size:10px;background:var(--rose-light);color:var(--rose-dark);padding:2px 7px;border-radius:10px;font-weight:600;}
+.ex-meta{font-size:12px;color:var(--muted);}
+.rest-label{color:var(--rose);}
 
-/* ── SETS ── */
-.sets-wrap { border-top: 1px solid var(--border); padding-top: 8px; }
-.sets-header { display: grid; grid-template-columns: 24px 24px 1fr 1fr 50px; gap: 5px; margin-bottom: 4px; }
-.sets-header span { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: center; }
-.sets-header span:first-child, .sets-header span:nth-child(2) { text-align: left; }
-.set-row { display: grid; grid-template-columns: 24px 24px 1fr 1fr 50px; gap: 5px; margin-bottom: 5px; align-items: center; }
-.set-cb { width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; flex-shrink: 0; }
-.set-row.set-done .set-cb { background: var(--rose); border-color: var(--rose); }
-.set-cb svg { display: none; }
-.set-row.set-done .set-cb svg { display: block; }
-.set-num { font-size: 12px; color: var(--muted); }
-.set-row input { font-size: 14px; padding: 6px 4px; border: 1px solid var(--border); border-radius: 7px; background: var(--bg); color: var(--black); text-align: center; width: 100%; font-family: 'DM Sans', sans-serif; }
-.set-row input:focus { outline: none; border-color: var(--rose); background: var(--white); }
-.add-set { margin-top: 6px; font-size: 12px; color: var(--muted); background: transparent; border: 1px dashed var(--border); border-radius: 7px; padding: 5px; cursor: pointer; width: 100%; font-family: 'DM Sans', sans-serif; }
-.swap-btn { margin-top: 8px; font-size: 12px; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 7px; padding: 5px 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+/* SETS */
+.sets-wrap{border-top:1px solid var(--border);padding-top:8px;}
+.sets-header{display:grid;grid-template-columns:24px 24px 1fr 1fr 50px;gap:5px;margin-bottom:4px;}
+.sets-header span{font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-align:center;}
+.sets-header span:first-child,.sets-header span:nth-child(2){text-align:left;}
+.set-row{display:grid;grid-template-columns:24px 24px 1fr 1fr 50px;gap:5px;margin-bottom:5px;align-items:center;}
+.set-cb{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;flex-shrink:0;}
+.set-row.set-done .set-cb{background:var(--rose);border-color:var(--rose);}
+.set-cb svg{display:none;}
+.set-row.set-done .set-cb svg{display:block;}
+.set-num{font-size:12px;color:var(--muted);}
+.set-row input{font-size:14px;padding:6px 4px;border:1px solid var(--border);border-radius:7px;background:var(--bg);color:var(--black);text-align:center;width:100%;font-family:'DM Sans',sans-serif;}
+.set-row input:focus{outline:none;border-color:var(--rose);background:var(--white);}
+.add-set{margin-top:6px;font-size:12px;color:var(--muted);background:transparent;border:1px dashed var(--border);border-radius:7px;padding:5px;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;}
+.swap-btn{margin-top:8px;font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:5px 10px;cursor:pointer;font-family:'DM Sans',sans-serif;}
 
-/* ── NOTES + ACTIONS ── */
-.notes-wrap { margin: 10px 0; }
-textarea { width: 100%; font-size: 13px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--white); color: var(--black); resize: vertical; min-height: 60px; font-family: 'DM Sans', sans-serif; line-height: 1.5; }
-textarea:focus { outline: none; border-color: var(--rose); }
-.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
-.btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; border: 1px solid var(--border); }
-.btn-primary { background: var(--rose); color: white; border-color: var(--rose); }
-.btn-secondary { background: var(--white); color: var(--black); }
-.btn-ghost { background: transparent; color: var(--muted); border-color: transparent; }
+/* EFFORT */
+.effort-row{display:flex;align-items:center;gap:5px;padding:6px 0 4px;flex-wrap:wrap;}
+.effort-hidden{display:none;}
+.effort-label{font-size:10px;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-right:2px;white-space:nowrap;}
+.effort-btn{font-size:11px;padding:4px 9px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:all 0.15s;}
+.effort-btn.effort-selected{border-color:var(--rose);color:var(--rose);background:var(--rose-light);font-weight:600;}
 
-/* ── HISTORY ── */
-#view-history { padding-top: 14px; }
-.view-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin-bottom: 12px; }
-.hist-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
-.hist-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-.hist-date { font-size: 12px; color: var(--muted); }
-.hist-day { font-size: 15px; font-weight: 500; }
-.hist-bw { font-size: 12px; color: var(--rose-dark); background: var(--rose-light); padding: 2px 8px; border-radius: 10px; }
-.hist-del { font-size: 13px; color: var(--muted); background: transparent; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-.hist-ex { font-size: 13px; font-weight: 500; margin-top: 5px; }
-.hist-ex-sets { font-size: 12px; color: var(--muted); }
-.hist-notes { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 6px; border-top: 1px solid var(--border); padding-top: 5px; }
+/* NOTES + ACTIONS */
+.notes-wrap{margin:10px 0;}
+textarea{width:100%;font-size:13px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--white);color:var(--black);resize:vertical;min-height:60px;font-family:'DM Sans',sans-serif;line-height:1.5;}
+textarea:focus{outline:none;border-color:var(--rose);}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.btn{padding:10px 18px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid var(--border);}
+.btn-primary{background:var(--rose);color:white;border-color:var(--rose);}
+.btn-secondary{background:var(--white);color:var(--black);}
+.btn-ghost{background:transparent;color:var(--muted);border-color:transparent;}
 
-/* ── WEIGHT ── */
-#view-weight { padding-top: 14px; }
-.weight-log-form { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; }
-.form-group { display: flex; flex-direction: column; gap: 4px; }
-.form-group label { font-size: 12px; color: var(--muted); }
-.form-group input { font-size: 14px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--black); font-family: 'DM Sans', sans-serif; }
+/* HISTORY */
+#view-history{padding-top:14px;}
+.view-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:12px;}
+.hist-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
+.hist-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.hist-date{font-size:12px;color:var(--muted);}
+.hist-day{font-size:15px;font-weight:500;}
+.hist-bw{font-size:12px;color:var(--rose-dark);background:var(--rose-light);padding:2px 8px;border-radius:10px;}
+.hist-del{font-size:13px;color:var(--muted);background:transparent;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.hist-ex{font-size:13px;font-weight:500;margin-top:5px;}
+.hist-ex-sets{font-size:12px;color:var(--muted);}
+.hist-notes{font-size:12px;color:var(--muted);font-style:italic;margin-top:6px;border-top:1px solid var(--border);padding-top:5px;}
 
-/* ── NUTRITION ── */
-#view-nutrition { padding-top: 14px; }
-.nutr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px; }
-.nutr-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
-.nutr-val { font-size: 22px; font-weight: 500; color: var(--rose); }
-.nutr-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+/* WEIGHT */
+#view-weight{padding-top:14px;}
+.weight-log-form{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;}
+.form-group{display:flex;flex-direction:column;gap:4px;}
+.form-group label{font-size:12px;color:var(--muted);}
+.form-group input{font-size:14px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--black);font-family:'DM Sans',sans-serif;}
 
-/* ── PHOTOS ── */
-#view-photos { padding-top: 14px; }
-.photo-upload-form { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
-.photo-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
-.photo-date { font-size: 12px; color: var(--muted); font-weight: 500; }
-.photo-note { font-size: 13px; color: var(--muted); margin-top: 5px; font-style: italic; }
-.file-input-label { display: block; text-align: center; padding: 10px; border: 1px dashed var(--border); border-radius: 8px; font-size: 13px; color: var(--muted); cursor: pointer; margin-top: 8px; }
-input[type="file"] { display: none; }
+/* NUTRITION */
+#view-nutrition{padding-top:14px;}
+.nutr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px;}
+.nutr-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+.nutr-val{font-size:22px;font-weight:500;color:var(--rose);}
+.nutr-label{font-size:12px;color:var(--muted);margin-top:2px;}
 
-/* ── PROGRAM EDIT ── */
-#view-program { padding-top: 14px; }
-.prog-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; margin-bottom: 12px; }
-.prog-day-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
-.prog-day-label { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-.prog-sec-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 8px 0 4px; }
-.prog-ex-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 4px 0; border-bottom: 1px solid var(--border); }
-.prog-ex-row:last-child { border-bottom: none; }
-.swap-btn-sm { font-size: 11px; color: var(--rose); background: var(--rose-light); border: none; border-radius: 6px; padding: 3px 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
-.edit-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+/* PHOTOS */
+#view-photos{padding-top:14px;}
+.photo-upload-form{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px;}
+.photo-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
+.photo-date{font-size:12px;color:var(--muted);font-weight:500;}
+.photo-note{font-size:13px;color:var(--muted);margin-top:5px;font-style:italic;}
+.file-input-label{display:block;text-align:center;padding:10px;border:1px dashed var(--border);border-radius:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-top:8px;}
+input[type="file"]{display:none;}
 
-/* ── BOTTOM NAV ── */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-h); background: var(--white); border-top: 1px solid var(--border); display: flex; z-index: 100; padding-bottom: env(safe-area-inset-bottom); }
-.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: none; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--muted); font-size: 10px; font-weight: 500; transition: color 0.15s; padding: 6px 0; }
-.nav-btn.active { color: var(--rose); }
-.nav-icon { font-size: 20px; line-height: 1; }
+/* PROGRAM */
+#view-program{padding-top:14px;}
+.prog-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:12px;}
+.prog-day-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;}
+.prog-day-label{font-size:14px;font-weight:600;margin-bottom:8px;}
+.prog-sec-label{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px;}
+.prog-ex-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:4px 0;border-bottom:1px solid var(--border);}
+.prog-ex-row:last-child{border-bottom:none;}
+.swap-btn-sm{font-size:11px;color:var(--rose);background:var(--rose-light);border:none;border-radius:6px;padding:3px 8px;cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0;}
+.edit-toggle{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:var(--muted);}
 
-/* ── EFFORT RATING ── */
-.effort-row { display: flex; align-items: center; gap: 5px; padding: 6px 0 4px; flex-wrap: wrap; }
-.effort-hidden { display: none; }
-.effort-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-right: 2px; white-space: nowrap; }
-.effort-btn { font-size: 11px; padding: 4px 9px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; transition: all 0.15s; }
-.effort-btn.effort-selected { border-color: var(--rose); color: var(--rose); background: var(--rose-light); font-weight: 600; }
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);background:var(--white);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--muted);font-size:10px;font-weight:500;transition:color 0.15s;padding:6px 0;}
+.nav-btn.active{color:var(--rose);}
+.nav-icon{font-size:20px;line-height:1;}
 
-/* ── MISC ── */
-.empty { text-align: center; padding: 2rem; color: var(--muted); font-size: 14px; }
-.toast { position: fixed; bottom: calc(var(--nav-h) + 12px); left: 50%; transform: translateX(-50%); background: var(--rose); color: white; padding: 10px 20px; border-radius: 20px; font-size: 13px; font-weight: 500; opacity: 0; transition: opacity 0.25s; pointer-events: none; z-index: 999; white-space: nowrap; }
-.toast.show { opacity: 1; }
+/* MISC */
+.empty{text-align:center;padding:2rem;color:var(--muted);font-size:14px;}
+.toast{position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);background:var(--rose);color:white;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.25s;pointer-events:none;z-index:999;white-space:nowrap;}
+.toast.show{opacity:1;}
 </style>
 </head>
 <body>
@@ -211,134 +198,116 @@ input[type="file"] { display: none; }
   </div>
 </div>
 
-<!-- APP SHELL — hidden until unlocked -->
+<!-- APP SHELL -->
 <div id="app-shell">
 
-<!-- HEADER -->
-<div class="app-header">
-  <div class="header-row">
-    <div class="app-title"><em>Warrior</em></div>
-    <div class="profile-switcher">
-      <button class="profile-btn" data-profile="andrew" onclick="switchProfile('andrew')">Andrew</button>
-      <button class="profile-btn active" data-profile="esme" onclick="switchProfile('esme')">Esme</button>
-    </div>
-  </div>
-  <div class="day-tabs" id="day-tabs"></div>
-</div>
-
-<!-- SCROLL BODY -->
-<div class="scroll-body">
-
-  <!-- TIMER BAR -->
-  <div id="timer-bar">
-    <div class="timer-time" id="timer-time">0:00</div>
-    <div class="timer-track"><div id="timer-fill" style="width:100%"></div></div>
-    <button class="timer-btn" onclick="addTime(30)">+30s</button>
-    <button class="timer-btn" onclick="skipTimer()">Skip</button>
-  </div>
-
-  <!-- WORKOUT VIEW -->
-  <div class="view" id="view-workout">
-    <div class="session-controls">
-      <label>Date</label>
-      <input type="date" id="session-date" onchange="state.sessionDate=this.value">
-      <label>BW</label>
-      <input type="number" id="session-bw" placeholder="lbs" step="0.1" style="width:72px">
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-row">
-        <span class="progress-label" id="prog-label">0 of 0 sets done</span>
-        <span class="progress-pct" id="prog-pct">0%</span>
+  <!-- HEADER -->
+  <div class="app-header">
+    <div class="header-row">
+      <div class="app-title"><em>Warrior</em></div>
+      <div class="profile-switcher">
+        <button class="profile-btn" data-profile="andrew" onclick="switchProfile('andrew')">Andrew</button>
+        <button class="profile-btn active" data-profile="esme" onclick="switchProfile('esme')">Esme</button>
       </div>
-      <div class="bar"><div class="bar-fill" id="prog-bar" style="width:0%"></div></div>
     </div>
-    <div id="exercises-container"></div>
-    <div class="notes-wrap">
-      <textarea id="session-notes" placeholder="Session notes — energy, form cues, PRs..."></textarea>
-    </div>
-    <div class="actions">
-      <button class="btn btn-primary" onclick="saveSession()">Save session</button>
-      <button class="btn btn-ghost" onclick="clearDay()">Clear</button>
-    </div>
+    <div class="day-tabs" id="day-tabs"></div>
   </div>
 
-  <!-- HISTORY VIEW -->
-  <div class="view" id="view-history">
-    <div class="view-title">History</div>
-    <div id="history-list"></div>
-  </div>
+  <!-- SCROLL BODY -->
+  <div class="scroll-body">
 
-  <!-- WEIGHT VIEW -->
-  <div class="view" id="view-weight">
-    <div class="view-title">Bodyweight</div>
-    <div class="weight-log-form">
-      <div class="form-group">
+    <!-- TIMER BAR -->
+    <div id="timer-bar">
+      <div class="timer-time" id="timer-time">0:00</div>
+      <div class="timer-track"><div id="timer-fill" style="width:100%"></div></div>
+      <button class="timer-btn" onclick="addTime(30)">+30s</button>
+      <button class="timer-btn" onclick="skipTimer()">Skip</button>
+    </div>
+
+    <!-- WORKOUT -->
+    <div class="view active" id="view-workout">
+      <div class="session-controls">
         <label>Date</label>
-        <input type="date" id="bw-date">
+        <input type="date" id="session-date" onchange="state.sessionDate=this.value">
+        <label>BW</label>
+        <input type="number" id="session-bw" placeholder="lbs" step="0.1" style="width:72px">
       </div>
-      <div class="form-group">
-        <label>Weight (lbs)</label>
-        <input type="number" id="bw-val" placeholder="lbs" step="0.1" style="width:90px">
+      <div class="progress-wrap">
+        <div class="progress-row">
+          <span class="progress-label" id="prog-label">0 of 0 sets done</span>
+          <span class="progress-pct" id="prog-pct">0%</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="prog-bar" style="width:0%"></div></div>
       </div>
-      <button class="btn btn-primary" onclick="logBW()" style="align-self:flex-end">Log</button>
-    </div>
-    <div id="weight-chart-area"></div>
-  </div>
-
-  <!-- NUTRITION VIEW -->
-  <div class="view" id="view-nutrition">
-    <div class="view-title">Nutrition targets</div>
-    <div id="nutrition-content"></div>
-  </div>
-
-  <!-- PHOTOS VIEW -->
-  <div class="view" id="view-photos">
-    <div class="view-title">Progress photos</div>
-    <div class="photo-upload-form">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <div class="form-group"><label>Date</label><input type="date" id="photo-date"></div>
-        <div class="form-group"><label>Weight</label><input type="number" id="photo-weight" placeholder="lbs" step="0.1" style="width:80px"></div>
+      <div id="exercises-container"></div>
+      <div class="notes-wrap">
+        <textarea id="session-notes" placeholder="Session notes — energy, form cues, PRs..."></textarea>
       </div>
-      <input type="text" id="photo-note" placeholder="Notes..." style="width:100%;margin-top:8px;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;">
-      <label class="file-input-label" for="photo-input">📷 Add photo</label>
-      <input type="file" id="photo-input" accept="image/*" capture="environment" onchange="handlePhoto(event)">
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveSession()">Save session</button>
+        <button class="btn btn-ghost" onclick="clearDay()">Clear</button>
+      </div>
     </div>
-    <div id="photos-list"></div>
-  </div>
 
-  <!-- PROGRAM VIEW -->
-  <div class="view" id="view-program">
-    <div class="view-title">Program</div>
-    <div class="edit-toggle">
-      <span>Swap exercises</span>
-      <input type="checkbox" id="edit-toggle" onchange="state.editMode=this.checked;renderAll()">
+    <!-- HISTORY -->
+    <div class="view" id="view-history">
+      <div class="view-title">History</div>
+      <div id="history-list"></div>
     </div>
-    <div id="program-content"></div>
-  </div>
 
-</div>
+    <!-- WEIGHT -->
+    <div class="view" id="view-weight">
+      <div class="view-title">Bodyweight</div>
+      <div class="weight-log-form">
+        <div class="form-group"><label>Date</label><input type="date" id="bw-date"></div>
+        <div class="form-group"><label>Weight (lbs)</label><input type="number" id="bw-val" placeholder="lbs" step="0.1" style="width:90px"></div>
+        <button class="btn btn-primary" onclick="logBW()" style="align-self:flex-end">Log</button>
+      </div>
+      <div id="weight-chart-area"></div>
+    </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-  <button class="nav-btn active" data-view="workout" onclick="switchView('workout')">
-    <span class="nav-icon">🏋️</span>Workout
-  </button>
-  <button class="nav-btn" data-view="history" onclick="switchView('history')">
-    <span class="nav-icon">📋</span>History
-  </button>
-  <button class="nav-btn" data-view="weight" onclick="switchView('weight')">
-    <span class="nav-icon">⚖️</span>Weight
-  </button>
-  <button class="nav-btn" data-view="nutrition" onclick="switchView('nutrition')">
-    <span class="nav-icon">🥗</span>Nutrition
-  </button>
-  <button class="nav-btn" data-view="photos" onclick="switchView('photos')">
-    <span class="nav-icon">📸</span>Photos
-  </button>
-  <button class="nav-btn" data-view="program" onclick="switchView('program')">
-    <span class="nav-icon">✏️</span>Program
-  </button>
-</nav>
+    <!-- NUTRITION -->
+    <div class="view" id="view-nutrition">
+      <div class="view-title">Nutrition targets</div>
+      <div id="nutrition-content"></div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="view" id="view-photos">
+      <div class="view-title">Progress photos</div>
+      <div class="photo-upload-form">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div class="form-group"><label>Date</label><input type="date" id="photo-date"></div>
+          <div class="form-group"><label>Weight</label><input type="number" id="photo-weight" placeholder="lbs" step="0.1" style="width:80px"></div>
+        </div>
+        <input type="text" id="photo-note" placeholder="Notes..." style="width:100%;margin-top:8px;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;">
+        <label class="file-input-label" for="photo-input">📷 Add photo</label>
+        <input type="file" id="photo-input" accept="image/*" capture="environment" onchange="handlePhoto(event)">
+      </div>
+      <div id="photos-list"></div>
+    </div>
+
+    <!-- PROGRAM -->
+    <div class="view" id="view-program">
+      <div class="view-title">Program</div>
+      <div class="edit-toggle">
+        <span>Swap exercises</span>
+        <input type="checkbox" id="edit-toggle" onchange="state.editMode=this.checked;renderAll()">
+      </div>
+      <div id="program-content"></div>
+    </div>
+
+  </div><!-- end scroll-body -->
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-view="workout" onclick="switchView('workout')"><span class="nav-icon">🏋️</span>Workout</button>
+    <button class="nav-btn" data-view="history" onclick="switchView('history')"><span class="nav-icon">📋</span>History</button>
+    <button class="nav-btn" data-view="weight" onclick="switchView('weight')"><span class="nav-icon">⚖️</span>Weight</button>
+    <button class="nav-btn" data-view="nutrition" onclick="switchView('nutrition')"><span class="nav-icon">🥗</span>Nutrition</button>
+    <button class="nav-btn" data-view="photos" onclick="switchView('photos')"><span class="nav-icon">📸</span>Photos</button>
+    <button class="nav-btn" data-view="program" onclick="switchView('program')"><span class="nav-icon">✏️</span>Program</button>
+  </nav>
 
 </div><!-- end app-shell -->
 
@@ -346,26 +315,14 @@ input[type="file"] { display: none; }
 
 <script src="app.js"></script>
 <script>
-function logBW() {
-  const val = document.getElementById('bw-val').value;
-  const date = document.getElementById('bw-date').value || new Date().toISOString().split('T')[0];
-  if (!val) { showToast('Enter a weight'); return; }
-  logBodyweight(val, date);
-  renderWeightChart();
-  showToast('Logged ✓');
-}
-
-// ── PASSWORD GATE ─────────────────────────────────────────────────────────────
 const APP_PASSWORD = 'warrior2026';
 const UNLOCK_KEY = 'warrior_unlocked_v1';
 
 function tryUnlock() {
-  const input = document.getElementById('lock-input').value;
-  if (input === APP_PASSWORD) {
+  const val = document.getElementById('lock-input').value;
+  if (val === APP_PASSWORD) {
     localStorage.setItem(UNLOCK_KEY, 'true');
-    document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('app-shell').classList.add('unlocked');
-    initApp();
+    unlock();
   } else {
     const err = document.getElementById('lock-error');
     err.textContent = 'Incorrect password — try again';
@@ -375,25 +332,33 @@ function tryUnlock() {
   }
 }
 
-document.getElementById('lock-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') tryUnlock();
-});
-
-function initApp() {
+function unlock() {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('app-shell').classList.add('unlocked');
   loadState();
-  document.getElementById('session-date').value = state.sessionDate;
+  document.getElementById('session-date').value = new Date().toISOString().split('T')[0];
   document.getElementById('bw-date').value = new Date().toISOString().split('T')[0];
   document.getElementById('photo-date').value = new Date().toISOString().split('T')[0];
+  state.sessionDate = new Date().toISOString().split('T')[0];
   renderAll();
   setInterval(renderTimer, 500);
 }
 
-// Check on load — if already unlocked go straight in
-if (localStorage.getItem(UNLOCK_KEY) === 'true') {
-  document.getElementById('lock-screen').style.display = 'none';
-  document.getElementById('app-shell').classList.add('unlocked');
-  initApp();
+document.getElementById('lock-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') tryUnlock();
+});
+
+function logBW() {
+  const val = document.getElementById('bw-val').value;
+  const date = document.getElementById('bw-date').value || new Date().toISOString().split('T')[0];
+  if (!val) { showToast('Enter a weight'); return; }
+  logBodyweight(val, date);
+  renderWeightChart();
+  showToast('Logged ✓');
 }
+
+// Auto-unlock if already authenticated
+if (localStorage.getItem(UNLOCK_KEY) === 'true') unlock();
 </script>
 </body>
 </html>
