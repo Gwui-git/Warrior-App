@@ -347,6 +347,8 @@ function getSetWeight(weightStr, si) {
   const parts = weightStr.split('/');
   return parts[si] !== undefined ? parts[si] : parts[parts.length - 1];
 }
+
+function getExType(ei) {
   let idx = 0;
   for (const sec of day().sections) {
     for (const ex of sec.exercises) {
@@ -355,6 +357,11 @@ function getSetWeight(weightStr, si) {
     }
   }
   return 'isolation';
+}
+
+function updateSetField(ei, si, field, val) {
+  const sets = getSets();
+  if (sets[ei] && sets[ei][si]) sets[ei][si][field] = val;
 }
 
 function setEffort(ei, si, level) {
