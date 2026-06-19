@@ -637,7 +637,7 @@ function renderWorkout() {
         const weightPH = (setWeight && setWeight !== 'BW' && !setWeight.startsWith('Band')) ? setWeight : 'lbs';
         const effortBtns = ex.type !== 'core' ? `
           <div class="effort-row${s.done ? '' : ' effort-hidden'}" id="effort-${myEi}-${si}">
-            <span class="effort-label">How'd it feel?</span>
+            <span class="effort-label">How did it feel?</span>
             <button class="effort-btn${s.effort==='easy'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'easy')">😤 Easy +5</button>
             <button class="effort-btn${s.effort==='right'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'right')">💪 Right +2.5</button>
             <button class="effort-btn${s.effort==='hard'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'hard')">🔥 Hard =</button>
