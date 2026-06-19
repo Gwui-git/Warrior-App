@@ -12,21 +12,21 @@ const DEFAULT_PROFILES = {
           id: 'push', label: 'Push', sub: 'Chest · Shoulders · Triceps', color: '#C0421A',
           sections: [
             { label: 'Chest', exercises: [
-              { name: 'Barbell bench press', sets: 5, reps: '5/5/12/12/10', weight: '185', type: 'compound' },
-              { name: 'Barbell incline bench press', sets: 3, reps: '12', weight: '115', type: 'compound' },
-              { name: 'Seated cable fly', sets: 3, reps: '15', weight: '40', type: 'isolation' },
+              { name: 'Barbell bench press', sets: 5, reps: '5/5/12/12/10', weight: '180/185/140/140/140', type: 'compound' },
+              { name: 'Barbell incline bench press', sets: 3, reps: '12', weight: '115/115/115', type: 'compound' },
+              { name: 'Seated cable fly', sets: 3, reps: '15', weight: '40/40/40', type: 'isolation' },
             ]},
             { label: 'Shoulders', exercises: [
-              { name: 'Single arm landmine press', sets: 3, reps: '12', weight: '100', type: 'compound' },
-              { name: 'Cable lateral raise', sets: 3, reps: '20', weight: '15', type: 'isolation' },
+              { name: 'Single arm landmine press', sets: 3, reps: '12', weight: '100/100/100', type: 'compound' },
+              { name: 'Cable lateral raise', sets: 3, reps: '20', weight: '15/15/15', type: 'isolation' },
             ]},
             { label: 'Triceps', exercises: [
-              { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115', type: 'isolation' },
-              { name: 'Cable rope tricep extension', sets: 3, reps: '12', weight: '80', type: 'isolation' },
+              { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115/115/115', type: 'isolation' },
+              { name: 'Cable rope tricep extension', sets: 3, reps: '12', weight: '80/80/80', type: 'isolation' },
             ]},
             { label: 'Core', exercises: [
               { name: 'Plank', sets: 3, reps: '40s', weight: 'BW', type: 'core' },
-              { name: 'Ab wheel rollout', sets: 3, reps: '9–10', weight: 'BW', type: 'core' },
+              { name: 'Ab wheel rollout', sets: 3, reps: '9', weight: 'BW', type: 'core' },
             ]},
           ]
         },
@@ -34,21 +34,21 @@ const DEFAULT_PROFILES = {
           id: 'pull', label: 'Pull', sub: 'Back · Biceps · Rear Delts', color: '#2D6A4F',
           sections: [
             { label: 'Back — horizontal', exercises: [
-              { name: 'Barbell row', sets: 4, reps: '12', weight: '185', type: 'compound' },
-              { name: 'T-bar row', sets: 3, reps: '12', weight: '110', type: 'compound' },
+              { name: 'Barbell row', sets: 4, reps: '12', weight: '170/175/180/185', type: 'compound' },
+              { name: 'T-bar row', sets: 3, reps: '12', weight: '110/110/110', type: 'compound' },
             ]},
             { label: 'Back — vertical', exercises: [
-              { name: 'Lat pulldown', sets: 3, reps: '12', weight: '180', type: 'compound' },
-              { name: 'Lat pulldown neutral grip', sets: 3, reps: '12', weight: '165', type: 'compound' },
+              { name: 'Lat pulldown wide grip', sets: 3, reps: '12', weight: '180/180/180', type: 'compound' },
+              { name: 'Lat pulldown neutral grip', sets: 3, reps: '12', weight: '165/165/165', type: 'compound' },
             ]},
             { label: 'Rear delt', exercises: [
-              { name: 'Cross cable rear delt fly', sets: 3, reps: '15', weight: '20', type: 'isolation' },
-              { name: 'Cable face pull', sets: 3, reps: '20', weight: '55', type: 'isolation' },
+              { name: 'Cross cable rear delt fly', sets: 3, reps: '15', weight: '20/20/20', type: 'isolation' },
+              { name: 'Cable face pull', sets: 3, reps: '20', weight: '55/55/55', type: 'isolation' },
             ]},
             { label: 'Biceps', exercises: [
-              { name: 'Cable hammer curl', sets: 3, reps: '15', weight: '65', type: 'isolation' },
-              { name: 'Cable bicep curl', sets: 3, reps: '12', weight: '80', type: 'isolation' },
-              { name: 'Behind the back cable bicep curl', sets: 3, reps: '12', weight: '30', type: 'isolation' },
+              { name: 'Cable hammer curl', sets: 3, reps: '15', weight: '55/60/65', type: 'isolation' },
+              { name: 'Cable bicep curl', sets: 3, reps: '12', weight: '80/80/80', type: 'isolation' },
+              { name: 'Behind the back cable bicep curl', sets: 3, reps: '12', weight: '30/30/30', type: 'isolation' },
             ]},
           ]
         },
@@ -56,18 +56,18 @@ const DEFAULT_PROFILES = {
           id: 'legs', label: 'Legs', sub: 'Glutes · Quads · Hamstrings', color: '#7B4F8E',
           sections: [
             { label: 'Quads', exercises: [
-              { name: 'Back squat', sets: 5, reps: '10', weight: '130', type: 'compound' },
-              { name: 'Dumbbell Bulgarian split squat', sets: 3, reps: '12', weight: '25', type: 'compound' },
+              { name: 'Back squat', sets: 5, reps: '10', weight: '110/115/120/125/130', type: 'compound' },
+              { name: 'Dumbbell Bulgarian split squat', sets: 3, reps: '12', weight: '25/25/25', type: 'compound' },
             ]},
             { label: 'Hamstrings', exercises: [
-              { name: 'Barbell Romanian deadlift', sets: 3, reps: '12', weight: '165', type: 'compound' },
-              { name: 'Single leg lying hamstring curl', sets: 3, reps: '12', weight: '30', type: 'isolation' },
+              { name: 'Barbell Romanian deadlift', sets: 3, reps: '12', weight: '165/165/165', type: 'compound' },
+              { name: 'Single leg lying hamstring curl', sets: 3, reps: '12', weight: '30/30/30', type: 'isolation' },
             ]},
             { label: 'Glutes', exercises: [
-              { name: 'Cable kickback', sets: 3, reps: '20', weight: '30', type: 'isolation' },
+              { name: 'Cable kickback', sets: 3, reps: '20', weight: '30/30/30', type: 'isolation' },
             ]},
             { label: 'Calves', exercises: [
-              { name: 'Barbell calf raise', sets: 3, reps: '20', weight: '145', type: 'isolation' },
+              { name: 'Barbell calf raise', sets: 3, reps: '20', weight: '145/145/145', type: 'isolation' },
             ]},
             { label: 'Core', exercises: [
               { name: 'Ab wheel rollout', sets: 3, reps: '10', weight: 'BW', type: 'core' },
@@ -79,21 +79,21 @@ const DEFAULT_PROFILES = {
           id: 'upper', label: 'Upper', sub: 'Full Upper + Core', color: '#2D4EA0',
           sections: [
             { label: 'Chest + Back — compound', exercises: [
-              { name: 'Barbell bench press', sets: 3, reps: '10', weight: '160', type: 'compound' },
-              { name: 'Lat pulldown', sets: 4, reps: '12', weight: '180', type: 'compound' },
-              { name: 'Assisted pull-up', sets: 3, reps: '8', weight: '', type: 'compound' },
-              { name: 'Meadows row', sets: 4, reps: '12', weight: '100', type: 'compound' },
+              { name: 'Barbell bench press', sets: 3, reps: '10', weight: '150/155/160', type: 'compound' },
+              { name: 'Lat pulldown wide grip', sets: 4, reps: '12', weight: '180/180/180/180', type: 'compound' },
+              { name: 'Assisted pull-up', sets: 3, reps: '8', weight: 'BW/BW/BW', type: 'compound' },
+              { name: 'Meadows row', sets: 4, reps: '12', weight: '100/100/100/100', type: 'compound' },
             ]},
             { label: 'Shoulders', exercises: [
-              { name: 'Barbell shoulder press', sets: 3, reps: '10', weight: '85', type: 'compound' },
+              { name: 'Barbell shoulder press', sets: 3, reps: '10', weight: '80/85/85', type: 'compound' },
             ]},
             { label: 'Arms', exercises: [
-              { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115', type: 'isolation' },
-              { name: 'Cable bicep curl', sets: 3, reps: '15', weight: '80', type: 'isolation' },
+              { name: 'Cable overhead tricep extension', sets: 3, reps: '12', weight: '115/115/115', type: 'isolation' },
+              { name: 'Cable bicep curl', sets: 3, reps: '15', weight: '75/80/80', type: 'isolation' },
             ]},
             { label: 'Rear delt + Core', exercises: [
-              { name: 'Cable face pull', sets: 3, reps: '20', weight: '55', type: 'isolation' },
-              { name: 'Cable torso rotation', sets: 3, reps: '12 ea', weight: '45', type: 'core' },
+              { name: 'Cable face pull', sets: 3, reps: '20', weight: '55/55/55', type: 'isolation' },
+              { name: 'Cable torso rotation', sets: 3, reps: '12 ea', weight: '45/45/45', type: 'core' },
               { name: 'Hanging knee raise', sets: 3, reps: '13', weight: 'BW', type: 'core' },
             ]},
           ]
@@ -319,7 +319,7 @@ function initSetData() {
     let ei = 0;
     day().sections.forEach(sec => {
       sec.exercises.forEach(ex => {
-        state.setData[key][ei] = Array.from({length: ex.sets}, () => ({ reps:'', weight:'', rpe:'', done:false }));
+        state.setData[key][ei] = Array.from({length: ex.sets}, () => ({ reps:'', weight:'', rpe:'', done:false, effort:'' }));
         ei++;
       });
     });
@@ -342,7 +342,11 @@ function toggleSet(ei, si) {
   updateProgress();
 }
 
-function getExType(ei) {
+function getSetWeight(weightStr, si) {
+  if (!weightStr || weightStr === 'BW' || weightStr.startsWith('Band')) return weightStr || '';
+  const parts = weightStr.split('/');
+  return parts[si] !== undefined ? parts[si] : parts[parts.length - 1];
+}
   let idx = 0;
   for (const sec of day().sections) {
     for (const ex of sec.exercises) {
@@ -353,15 +357,71 @@ function getExType(ei) {
   return 'isolation';
 }
 
-function updateSetField(ei, si, field, val) {
+function setEffort(ei, si, level) {
   const sets = getSets();
-  if (sets[ei] && sets[ei][si]) sets[ei][si][field] = val;
+  if (sets[ei] && sets[ei][si]) {
+    sets[ei][si].effort = level;
+  }
+  renderWorkout();
+}
+
+// ─── AUTO PROGRESSION ────────────────────────────────────────────────────────
+const EFFORT_INCREMENT = { easy: 5, right: 2.5, hard: 0 };
+const ISOLATION_INCREMENT = { easy: 2.5, right: 2.5, hard: 0 };
+
+function applyProgression() {
+  const sets = getSets();
+  const exs = getAllExercises();
+  const di = state.currentDay;
+  let progressCount = 0;
+
+  exs.forEach((ex, ei) => {
+    if (ex.type === 'core') return; // skip core
+    const exSets = sets[ei] || [];
+    const effortRatings = exSets.filter(s => s.effort).map(s => s.effort);
+    if (effortRatings.length === 0) return;
+
+    // Majority vote on effort
+    const counts = { easy: 0, right: 0, hard: 0 };
+    effortRatings.forEach(e => { if (counts[e] !== undefined) counts[e]++; });
+    const dominant = Object.entries(counts).sort((a,b) => b[1]-a[1])[0][0];
+
+    const isIsolation = ex.type === 'isolation';
+    const inc = isIsolation ? ISOLATION_INCREMENT[dominant] : EFFORT_INCREMENT[dominant];
+    if (inc === 0) return;
+
+    // Find this exercise in the program and update weights
+    let secIdx = 0, exInSec = 0, running = 0;
+    const d = state.profiles[state.activeProfile].program.days[di];
+    outer: for (let s = 0; s < d.sections.length; s++) {
+      for (let e = 0; e < d.sections[s].exercises.length; e++) {
+        if (running === ei) { secIdx = s; exInSec = e; break outer; }
+        running++;
+      }
+    }
+
+    const progEx = d.sections[secIdx].exercises[exInSec];
+    const currentWeights = progEx.weight.split('/');
+    const newWeights = currentWeights.map(w => {
+      if (w === 'BW' || w.startsWith('Band')) return w;
+      const num = parseFloat(w);
+      return isNaN(num) ? w : String(Math.round((num + inc) * 4) / 4); // round to nearest 0.25
+    });
+    progEx.weight = newWeights.join('/');
+    progressCount++;
+  });
+
+  if (progressCount > 0) {
+    saveState();
+    return progressCount;
+  }
+  return 0;
 }
 
 function addSet(ei) {
   const sets = getSets();
   if (!sets[ei]) sets[ei] = [];
-  sets[ei].push({ reps:'', weight:'', rpe:'', done:false });
+  sets[ei].push({ reps:'', weight:'', rpe:'', done:false, effort:'' });
   renderWorkout();
 }
 
@@ -440,8 +500,16 @@ function saveSession() {
   if (!profile().sessions) profile().sessions = [];
   profile().sessions.unshift(session);
   if (bw) logBodyweight(bw, state.sessionDate);
+
+  // Apply progressive overload based on effort ratings
+  const progCount = applyProgression();
+
   saveState();
-  showToast('Session saved ✓');
+  if (progCount > 0) {
+    showToast(`Session saved ✓ · ${progCount} exercise${progCount > 1 ? 's' : ''} progressed 📈`);
+  } else {
+    showToast('Session saved ✓');
+  }
   clearDay();
 }
 
@@ -558,16 +626,24 @@ function renderWorkout() {
           <div class="sets-header"><span></span><span>#</span><span>Reps</span><span>Weight</span><span>RPE</span></div>
           <div id="setrows-${myEi}">`;
       exSets.forEach((s, si) => {
-        const weightPH = (ex.weight && ex.weight !== 'BW' && !ex.weight.startsWith('Band')) ? ex.weight : 'lbs';
+        const setWeight = getSetWeight(ex.weight, si);
+        const weightPH = (setWeight && setWeight !== 'BW' && !setWeight.startsWith('Band')) ? setWeight : 'lbs';
+        const effortBtns = ex.type !== 'core' ? `
+          <div class="effort-row${s.done ? '' : ' effort-hidden'}" id="effort-${myEi}-${si}">
+            <span class="effort-label">How'd it feel?</span>
+            <button class="effort-btn${s.effort==='easy'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'easy')">😤 Easy +5</button>
+            <button class="effort-btn${s.effort==='right'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'right')">💪 Right +2.5</button>
+            <button class="effort-btn${s.effort==='hard'?' effort-selected':''}" onclick="setEffort(${myEi},${si},'hard')">🔥 Hard =</button>
+          </div>` : '';
         html += `<div class="set-row${s.done ? ' set-done' : ''}" id="setrow-${myEi}-${si}">
           <div class="set-cb" onclick="toggleSet(${myEi},${si})">
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div class="set-num">${si+1}</div>
-          <input type="text" inputmode="decimal" placeholder="${ex.reps || 'reps'}" value="${s.reps}" onchange="updateSetField(${myEi},${si},'reps',this.value)">
+          <input type="text" inputmode="decimal" placeholder="${ex.reps ? ex.reps.split('/')[Math.min(si, ex.reps.split('/').length-1)] : 'reps'}" value="${s.reps}" onchange="updateSetField(${myEi},${si},'reps',this.value)">
           <input type="text" inputmode="decimal" placeholder="${weightPH}" value="${s.weight}" onchange="updateSetField(${myEi},${si},'weight',this.value);checkPR(${myEi})">
           <input type="text" inputmode="decimal" placeholder="RPE" value="${s.rpe}" onchange="updateSetField(${myEi},${si},'rpe',this.value)">
-        </div>`;
+        </div>${effortBtns}`;
       });
       html += `</div>
           <button class="add-set" onclick="addSet(${myEi})">+ add set</button>
